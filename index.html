@@ -10,10 +10,100 @@
         <button onclick="openW" >  submit</button>
 
     </div>
-    <div id="maindiv"></div>   
+    <div id="maindiv">
+
+       
+    </div>   
      
     
-    <script src=".index.js"></script>
+    
 
 </body>
+
+<script>
+
+async function openW(){
+    const city_name = document.getElementById("input");
+    try {
+
+
+        let out = await     fetch("https://api.openweathermap.org/data/2.5/weather?q={city_name}&appid=9855d27f5236be2b46c897833426be00")
+        let d_out = await out.joson()
+
+        await dis(d_out)
+
+    } catch (error){
+
+        var E1 = document.createElement("h1")
+        E1.textContent = "not in api"
+
+        maindiv.append(E1)
+
+
+
+    }
+
+
+
+   
+
+   
+//    console.log(inp)
+    
+}
+
+
+openW()
+
+function dis(d_out){
+
+
+
+    //(temp, pressure, humidity, wind speed, sunrise, sunset, weather description)
+
+    var wed = document.getElementById("wed")
+
+    var city_name = document.getElementById("city").value;
+
+    var maindiv = document.getElementById("maindiv")
+
+    var mtemp = document.createElement("h3")
+
+    mtemp.innerText = d_out.main.temp_min.value
+
+    var pressure = document.createElement("h3")
+    pressure.innerText = d_out.main.pressure.value
+
+    var humidity = document.createElement("h3")
+    humidity.innerText = d_out.main.value
+    
+    maindiv.append(city_name,pressure)
+
+
+}
+    
+// function showData(d_out) {
+
+// var cityName = document.getElementById("cityName");
+// cityName.innerHTML = d_out.name;
+
+// var type = document.getElementById("type");
+// type.innerHTML = d_out.weather[0].main;
+
+// var temp = document.getElementById("temp");
+// temp.innerHTML = d_out.main.temp + " °C";
+
+// var humidity = document.getElementById("humidity");
+// humidity.innerHTML = d_out.main.humidity + "%";
+
+// console.log(d_out);
+
+
+// }
+
+
+
+
+</script>
+
 </html>

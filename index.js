@@ -47,8 +47,10 @@ function dis(d_out){
     mtemp.innerText = d_out.main.temp_min
 
     var pressure = document.createElement("h3")
+    pressure.innerText = d_out.main.pressure
 
-    
+    var humidity = document.createElement("h3")
+    humidity.innerText = d_out.main.humidity
 
 
 
